@@ -1,9 +1,9 @@
 <?php
 
-require_once 'C:\wamp64\www\blog\model\Manager.php';
-require_once 'C:\wamp64\www\blog\model\ChapterManager.php';
-require_once 'C:\wamp64\www\blog\model\CommentsManager.php';
-require_once 'C:\wamp64\www\blog\model\AdminManager.php';
+require_once '.\model\Manager.php';
+require_once '.\model\ChapterManager.php';
+require_once '.\model\CommentsManager.php';
+require_once '.\model\AdminManager.php';
 
 class Backend extends Manager
 {
@@ -12,7 +12,7 @@ class Backend extends Manager
         $chapterManager = new ChapterManager();
         $chapters = $chapterManager->getChapters();
 
-        include 'C:\wamp64\www\blog\view\backend\listChaptersViewBackend.php';
+        include '.\view\backend\listChaptersViewBackend.php';
     }
 
     function addChapter($title, $content)
@@ -33,7 +33,7 @@ class Backend extends Manager
     	$chapterManager = new ChapterManager();
     	$chapter = $chapterManager->getChapter($id);
 
-    	include 'C:\wamp64\www\blog\view\backend\updateChapterViewBackend.php';
+    	include '.\view\backend\updateChapterViewBackend.php';
     	// header('Location: updateChapterViewBackend.php');
     }
 
@@ -59,7 +59,7 @@ class Backend extends Manager
     		throw new Exception('Impossible d\'afficher les commentaires !');
     	}
     	else {
-    		include 'C:\wamp64\www\blog\view\backend\listCommentsView.php';
+    		include '.\view\backend\listCommentsView.php';
     	}
     }
 
@@ -109,7 +109,7 @@ class Backend extends Manager
     	$adminMana = new AdminManager();
     	$admin = $adminMana->getProfil();
     	
-    	include 'C:\wamp64\www\blog\view\backend\profil.php';
+    	include '.\view\backend\profil.php';
     	return $admin;
     }
 

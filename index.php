@@ -1,10 +1,11 @@
 <?php
 
-//require 'controller/frontend.php';
-require 'C:\wamp64\www\blog\controller\backend.php';
-require 'C:\wamp64\www\blog\lib.php';
+require_once '.\controller\frontend.php';
+require_once '.\controller\backend.php';
+require_once '.\lib.php';
 
 $backend = new Backend();
+$frontend = new Frontend();
 
 try {
 	if (isset($_GET['action'])) { 
@@ -22,8 +23,8 @@ try {
         }
         elseif ($_GET['action'] == 'addChapter') {
             if (!empty($_POST['chapterTitle']) && !empty($_POST['chapterContent'])) {
-            	echo $_POST['chapterTitle'];
-            	echo $_POST['chapterContent'];
+            	// echo $_POST['chapterTitle'];
+            	// echo $_POST['chapterContent'];
                 $backend->addChapter($_POST['chapterTitle'], $_POST['chapterContent']);
             } 
             else {
@@ -55,6 +56,14 @@ try {
         elseif ($_GET['action'] == 'approveComment') {
         	$backend->approveComment($_GET['id']);
         }
+        elseif ($_GET['action'] == 'logPage') {
+            if (isset($_SESSION['pseudo'])) {
+                $backend->listChaptersBackend();
+            }
+            else {
+                include './view/backend/loginView.php';
+            }
+        }
         elseif ($_GET['action'] == 'login') {
         	$backend->logIn($_POST['pseudo'] ,$_POST['password']);
         }
@@ -67,13 +76,23 @@ try {
         elseif ($_GET['action'] == 'updateProfile') {
         	$backend->updateProfile($_POST['username'], $_POST['pseudo'], $_POST['oldpass'], $_POST['newpass']);
         }
+        // FRONT END
+        elseif ($_GET['action'] == 'home') {
+            $frontend->getHome();
+        }
+        elseif ($_GET['action'] == 'about') {
+            include './view/frontend/about.php';
+        }
+        elseif ($_GET['action'] == 'book') {
+            $frontend->getBook();
+        }
 	}
 	else {
 		if (isset($_SESSION['pseudo'])) {
 			$backend->listChaptersBackend();
 		}
 		else {
-			include 'view/backend/loginView.php';
+			include 'view/frontend/home.php';
 		}
 	}
 }

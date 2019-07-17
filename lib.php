@@ -1,7 +1,29 @@
-<!-- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"> -->
-<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" type="text/css" href="style.css" />
-<link rel="stylesheet" type="text/css" href="styleTinymce.css" />
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+ 
+<!-- <link href="./style.css" rel="stylesheet" />
+<link href="./styleTiny.css" rel="stylesheet" /> -->
+<link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
+<link href="./assets/css/now-ui-kit.css" rel="stylesheet" />
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
+
+<script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
+
+<script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
+  
+<script src="./assets/js/plugins/bootstrap-switch.js" type ="text/javascript"></script>
+  
+<script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
+  
+<script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script>
+
+<script src="./assets/js/now-ui-kit.js" type="text/javascript"></script>
+ 
+<script src="./assets/js/home.js" type="text/javascript"></script>
+
+<script src="./assets/js/plugins/turn/lib/turn.js" type="text/javascript"></script>
+<script src="./assets/js/plugins/turn/lib/turn.html4.js" type="text/javascript"></script>
+<script src="./assets/js/plugins/turn/lib/hash.js" type="text/javascript"></script>
+
+<script src="./assets/js/plugins/turn/extras/modernizr.2.5.3.min.js" type="text/javascript"></script>
