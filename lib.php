@@ -1,11 +1,11 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
  
-<!-- <link href="./style.css" rel="stylesheet" />
-<link href="./styleTiny.css" rel="stylesheet" /> -->
+
 <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
 <link href="./assets/css/now-ui-kit.css" rel="stylesheet" />
-
+<link href="./style.css" rel="stylesheet" />
+<link href="./styleTiny.css" rel="stylesheet" />
 <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
 
 <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
