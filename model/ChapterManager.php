@@ -12,6 +12,14 @@ class ChapterManager extends Manager
         return $req;
     }
 
+    public function getSommaire()
+    {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM post ORDER BY creation_date');
+
+        return $req;
+    }
+
     public function getChapter($id)
     {
         $db = $this->dbConnect();

@@ -101,7 +101,7 @@ $mail->addAddress("jeanforteroche@outlook.fr");
 
 // $mail->isHTML(true);
 
-$mail->Subject = "Subject Text";
+$mail->Subject = "Nouveau message de ". $name ." - Un Billet pour l'Alaska";
 $mail->Body = $message;
 // $mail->AltBody = "This is the plain text version of the email content";
 

@@ -7,17 +7,93 @@
         <link rel="icon" type="image/png" href="./assets/img/favicon.png">
         
         <!-- <script type="text/javascript" src="./assets/js/plugins/turn/extras/jquery.min.1.7.js"></script> -->
-    <script type="text/javascript" src="./assets/js/plugins/turn/extras/jquery-ui-1.8.20.custom.min.js"></script>
+    <!-- <script type="text/javascript" src="./assets/js/plugins/turn/extras/jquery-ui-1.8.20.custom.min.js"></script>
     <script type="text/javascript" src="./assets/js/plugins/turn/extras/jquery.mousewheel.min.js"></script>
     <script type="text/javascript" src="./assets/js/plugins/turn/extras/modernizr.2.5.3.min.js"></script>
-    <script type="text/javascript" src="./assets/js/plugins/turn/lib/hash.js"></script>
+	<script type="text/javascript" src="./assets/js/plugins/turn/lib/hash.js"></script> -->
+	<script type="text/javascript" src="./turn.min.js"></script>
 
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
             Billet pour l'Alaska
         </title>
         <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
-    </head>
+	
+		<style type="text/css">
+body{
+	background:#ccc;
+}
+#book{
+	min-width:800px;
+	min-height:500px;
+	width:100%;
+	height: 100%;
+	position: relative;
+}
+
+#book .turn-page{
+	background-color:white;
+}
+
+#book .cover{
+	margin: 0;
+	padding: 0;
+	background: url("./assets/img/book-cover.png") no-repeat center;
+	background-size: cover;
+}
+
+#book .cover h1{
+	color: rgb(110, 63, 8);
+	text-align:center;
+	font-size:35px;
+	line-height:350px;
+	margin:0px;
+	text-shadow: 1px 1px 0.5px black, 0 0 1em black, 0 0 0.2em black, -1px -2px 0 rgba(0,0,0,0.4), 1px 2px 0 rgb(0, 0, 0);
+}
+
+#book .loader{
+	background-image:url(loader.gif);
+	width:24px;
+	height:24px;
+	display:block;
+	position:absolute;
+	top:238px;
+	left:188px;
+}
+
+#book .data{
+	text-align:center;
+	font-size:40px;
+	color:#999;
+	line-height:500px;
+}
+
+#controls{
+	width:800px;
+	text-align:center;
+	margin:20px 0px;
+	font:30px arial;
+}
+
+#controls input, #controls label{
+	font:30px arial;
+}
+
+/* #book .odd{
+	background-image:-webkit-linear-gradient(left, #FFF 95%, #ddd 100%);
+	background-image:-moz-linear-gradient(left, #FFF 95%, #ddd 100%);
+	background-image:-o-linear-gradient(left, #FFF 95%, #ddd 100%);
+	background-image:-ms-linear-gradient(left, #FFF 95%, #ddd 100%);
+} */
+
+#book .even{
+	background-image:-webkit-linear-gradient(right, #FFF 95%, #ddd 100%);
+	background-image:-moz-linear-gradient(right, #FFF 95%, #ddd 100%);
+	background-image:-o-linear-gradient(right, #FFF 95%, #ddd 100%);
+	background-image:-ms-linear-gradient(right, #FFF 95%, #ddd 100%);
+}
+</style>
+</head>
 
     <body class="index-page sidebar-collapse">
         
@@ -68,8 +144,8 @@
             <div class="page-header clear-filter" filter-color="blue">
                 <div class="page-header-image" data-parallax="true" style="background-image:url('./assets/img/header1.jpg');">
                 </div>
-                <div id="canvas">
-                    <div id="book-zoom">
+                <div id="canvas" class="container">
+                    <!-- <div id="book-zoom">
                         <div class="sj-book">
                             <div depth="5" class="hard"> <div class="side"></div> </div>
                             <div depth="5" class="hard front-side"> <div class="depth"></div> </div>
@@ -78,7 +154,14 @@
                             <div class="hard fixed back-side p111"> <div class="depth"></div> </div>
                             <div class="hard p112"></div>
                         </div>
-                    </div>
+					</div> -->
+					<div id="book">
+						<div class="cover"><h1>Un billet pour l'Alaska</h1></div>
+					</div>
+
+					<!-- <div id="controls">
+						<label for="page-number">Page:</label> <input type="text" size="3" id="page-number"> of <span id="number-pages"></span>
+					</div> -->
                 </div>
             </div>
         
@@ -109,6 +192,83 @@
             </footer>
         </div>
 
+<script type="text/javascript">
+
+// Sample using dynamic pages with turn.js
+
+var numberOfPages = 1000; 
+
+
+// Adds the pages that the book will need
+function addPage(page, book) {
+	// 	First check if the page is already in the book
+	if (!book.turn('hasPage', page)) {
+		// Create an element for this page
+		var element = $('<div />', {'class': 'page '+((page%2==0) ? 'odd' : 'even'), 'id': 'page-'+page}).html('<i class="loader"></i>');
+		// If not then add the page
+		book.turn('addPage', element, page);
+		// Let's assum that the data is comming from the server and the request takes 1s.
+		if (page == 2) {
+				
+				console.log('<?=$sommaire;?>');
+				console.log(data);
+				setTimeout(function(){
+					element.html(sommaire);
+				}, 1000);
+		}
+		else {
+			setTimeout(function(){
+					element.html('<div class="data">Data for page '+page+'</div>');
+			}, 1000);
+		}
+	}
+}
+
+$(window).ready(function(){
+	$('#book').turn({acceleration: true,
+						pages: numberOfPages,
+						elevation: 50,
+						gradients: !$.isTouch,
+						when: {
+							turning: function(e, page, view) {
+
+								// Gets the range of pages that the book needs right now
+								var range = $(this).turn('range', page);
+
+								// Check if each page is within the book
+								for (page = range[0]; page<=range[1]; page++) 
+									addPage(page, $(this));
+
+							},
+
+							turned: function(e, page) {
+								$('#page-number').val(page);
+							}
+						}
+					});
+
+	$('#number-pages').html(numberOfPages);
+
+	$('#page-number').keydown(function(e){
+
+		if (e.keyCode==13)
+			$('#book').turn('page', $('#page-number').val());
+			
+	});
+});
+
+$(window).bind('keydown', function(e){
+
+	if (e.target && e.target.tagName.toLowerCase()!='input')
+		if (e.keyCode==37)
+			$('#book').turn('previous');
+		else if (e.keyCode==39)
+			$('#book').turn('next');
+
+});
+
+</script>
+
         <!-- <script type="text/javascript">
 	$("#flipbook").turn({
 		width: 400,
@@ -117,7 +277,7 @@
 	});
 </script> -->
 
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 
 function loadApp() {
 	
@@ -302,7 +462,9 @@ yepnope({
 	complete: loadApp
 });
 
-</script>
+</script> -->
+
+
 
     </body>
 </html>

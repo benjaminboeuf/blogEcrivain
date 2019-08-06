@@ -1,6 +1,7 @@
 <?php
 
 require_once '.\model\Manager.php';
+require_once '.\model\ChapterManager.php';
 
 class Frontend extends Manager
 {
@@ -11,6 +12,11 @@ class Frontend extends Manager
 
     function getBook()
     {
+        $chapterManager = new ChapterManager();
+        $sommaire = $chapterManager->getSommaire();
+        $sommaire->fetch();
+        $sommaire->rowCount();
+        var_dump($sommaire->fetch()[0]);
         include '.\view\frontend\book.php';
     }
 }
