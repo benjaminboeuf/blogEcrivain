@@ -67,7 +67,7 @@ try {
         elseif ($_GET['action'] == 'login') {
         	$backend->logIn($_POST['pseudo'] ,$_POST['password']);
         }
-        elseif ($_GET['action'] == 'logout') {
+        elseif ($_GET['action'] == 'logOut') {
         	$backend->logOut();
         }
         elseif ($_GET['action'] == 'profil') {
@@ -85,6 +85,30 @@ try {
         }
         elseif ($_GET['action'] == 'book') {
             $frontend->getBook();
+        }
+        elseif ($_GET['action'] == 'content') {
+            if (isset($_GET['id'])) {
+                $frontend->getContent($_GET['id']);
+            }
+            else {
+                throw new Exception('Content need an id');
+            }
+        }
+        elseif ($_GET['action'] == 'title') {
+            if (isset($_GET['id'])) {
+                $frontend->getTitle($_GET['id']);
+            }
+            else {
+                throw new Exception('Title need an id');
+            }
+        }
+        elseif ($_GET['action'] == 'commentsChapter') {
+            if (isset($_GET['id'])) {
+                $frontend->getComments($_GET['id']);
+            }
+            else {
+                throw new Exception('Comments need an id');
+            }
         }
 	}
 	else {

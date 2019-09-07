@@ -7,7 +7,7 @@ class ChapterManager extends Manager
     public function getChapters()
     {
         $db = $this->dbConnect();
-        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM post ORDER BY creation_date DESC');
+        $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%i\') AS creation_date_fr FROM post ORDER BY creation_date DESC');
 
         return $req;
     }
@@ -18,6 +18,26 @@ class ChapterManager extends Manager
         $req = $db->query('SELECT id, title, content, DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') AS creation_date_fr FROM post ORDER BY creation_date');
 
         return $req;
+    }
+
+    public function getContent($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT content FROM post WHERE id = ?');
+        $content = $req->execute(array($id));
+        $content = $req->fetchColumn(0);
+
+        return $content;
+    }
+
+    public function getTitle($id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT title FROM post WHERE id = ?');
+        $content = $req->execute(array($id));
+        $content = $req->fetchColumn(0);
+
+        return $content;
     }
 
     public function getChapter($id)

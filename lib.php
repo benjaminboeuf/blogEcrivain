@@ -6,25 +6,24 @@
 <link href="./style.css" rel="stylesheet" />
 <link href="./styleTiny.css" rel="stylesheet" />
 
-
 <script src="./assets/js/core/jquery.min.js" type="text/javascript"></script>
 
 <script src="./assets/js/core/popper.min.js" type="text/javascript"></script>
 
 <script src="./assets/js/core/bootstrap.min.js" type="text/javascript"></script>
   
-<script src="./assets/js/plugins/bootstrap-switch.js" type ="text/javascript"></script>
+<!-- <script src="./assets/js/plugins/bootstrap-switch.js" type ="text/javascript"></script> -->
   
 <!-- <script src="./assets/js/plugins/nouislider.min.js" type="text/javascript"></script>
   
 <script src="./assets/js/plugins/bootstrap-datepicker.js" type="text/javascript"></script> -->
 
 <script src="./assets/js/now-ui-kit.js" type="text/javascript"></script>
- 
-<script src="./assets/js/home.js" type="text/javascript"></script>
 
 <!-- <script src="./assets/js/plugins/turn/lib/turn.js" type="text/javascript"></script>
 <script src="./assets/js/plugins/turn/lib/turn.html4.js" type="text/javascript"></script>
 <script src="./assets/js/plugins/turn/lib/hash.js" type="text/javascript"></script>
 
 <script src="./assets/js/plugins/turn/extras/modernizr.2.5.3.min.js" type="text/javascript"></script> -->
+
+<!-- <script src="./tinymce/js/tinymce/tinymce.min.js" type="text/javascript"></script> -->

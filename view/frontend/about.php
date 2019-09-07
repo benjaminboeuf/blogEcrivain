@@ -7,7 +7,7 @@
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-        Billet pour l'Alaska
+        Billet Simple pour l'Alaska
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 </head>
@@ -69,7 +69,7 @@
             </div>
         </div>
 
-        <div class="section">
+        <div class="container">
             <div class="container">
                 <h3 class="title">À propos..</h3>
                 <h5 class="description"><p>Jean Forteroche est né le 26 octobre 1958 en France.
@@ -93,10 +93,10 @@
             Croix Rouge, <em>La missive du Boiteux</em>. 
         Son roman <em>L'appel du triton chahuteur</em>a été adapté en bande dessinée par Vivel. 
         La première partie est sortie le 31 aout 2010, la seconde partie le 16 mars 2011.
-        Son roman <em>Les vacanciers des cahutes perdues</em> a été adapté en série d'animation 
+        Son roman <em>Les vacanciers des îles perdues</em> a été adapté en série d'animation 
         par Tif Parl. La série est sortie le 12 septembre 2013.</p>
-        <p>Sa nouvelle oeuvre, <em>Un billet pour l'Alaska</em> est actuellement en cours 
-        d'écriture. Il est cependant partiellement disponible sur son <span title="unbilletpourlalaska.com">site</span>, en attendant la parution du récit complet.</p></h5>
+        <p>Sa nouvelle oeuvre, <em>Un billet simple pour l'Alaska</em> est actuellement en cours 
+        d'écriture. Il est cependant partiellement disponible sur son <span title="unbilletsimplepourlalaska.com">site</span>, en attendant la parution du récit complet.</p></h5>
             </div>
         </div>
 
@@ -117,7 +117,7 @@
                         </div>
                         <div class="form-group">
                             <label for="message" class="h4 ">Message</label>
-                            <textarea id="message" name="message" class="form-control" rows="5" placeholder="Entrer votre message" required></textarea>
+                            <textarea id="message" name="message" class="form-control" rows="8" placeholder="Entrer votre message" required></textarea>
                         </div>
                         <div id="msgSubmit" class="h3 text-center">Message Envoyé !</div>
                         <button type="submit" id="formSubmit" class="btn btn-primary btn-lg">Envoyer</button>

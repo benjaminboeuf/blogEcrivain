@@ -21,37 +21,48 @@ if (isset($_SESSION['pseudo'])) {
   </head>
 
     <body>
-        <div id="header" class="navbar navbar-default navbar-fixed-top">
-            <div class="navbar-header">
-                <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                    <i class="icon-reorder"></i>
-                </button>
+        <nav class="navbar navbar-expand-lg fixed-top" data-background-color="black">
+            <div class="container">
+                <div class="navbar-translate">
+                    <a class="navbar-brand" href="index.php?action=logOut" data-placement="bottom">
+                        Déconnexion
+                    </a>
+                    <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar top-bar"></span>
+                        <span class="navbar-toggler-bar middle-bar"></span>
+                        <span class="navbar-toggler-bar bottom-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse bg-primary justify-content-end" id="navigation">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" rel="tooltip" title="Éditez vos chapitres" href="index.php?action=listChaptersBackend">
+                                <p>Chapitres</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" rel="tooltip" title="Gérez et modérez les commentaires" data-placement="bottom" href="index.php?action=getAllComments">
+                                <p>Commentaires</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" rel="tooltip" title="Modifiez votre profil" data-placement="bottom" href="index.php?action=profil">
+                                <p>Profil</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <nav class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="index.php?action=listChaptersBackend">Billets</a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="commentsList.php">Commentaires</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav pull-right">
-                    <li class="dropdown">
-                        <a href="index.php?action=logout">Déconnexion</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+        </nav>
 
-        <div class="container">
-            <div class="row">
-                <div class="col-md-9">
+        <div class="container" style="margin-top: 120px;">
+            <div class="container">
+                <div class="container">
                     <div class="card">
                         <div class="card-body">
-                            <div class="row">
+                            <div class="container">
                                 <div class="col-md-12">
-                                    </br>
+                                    <br>
                                     <h3>Votre Profil</h4>
                                     <hr>
                                 </div>
@@ -63,14 +74,14 @@ if (isset($_SESSION['pseudo'])) {
                                         <div class="form-group row">
                                             <label for="username" class="col-4 col-form-label">Prénom et nom</label> 
                                             <div class="col-8">
-                                                <input id="username" name="username" placeholder="<?= $data['username']?>" class="form-control here" type="text">
+                                                <input id="username" name="username" value="<?= $data['username']?>" class="form-control here" type="text">
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="pseudo" class="col-4 col-form-label">Pseudo</label> 
                                             <div class="col-8">
-                                                <input id="pseudo" name="pseudo" placeholder="<?= $data['login']?>" class="form-control here" type="text">
+                                                <input id="pseudo" name="pseudo" value="<?= $data['login']?>" class="form-control here" type="text">
                                             </div>
                                         </div>
                               
@@ -83,20 +94,20 @@ if (isset($_SESSION['pseudo'])) {
                                         <div class="form-group row">
                                             <label for="oldpass" class="col-4 col-form-label">Entrez votre mot de passe actuel</label> 
                                             <div class="col-8">
-                                                <input type="password" id="oldpass" name="oldpass" placeholder="Old Password" class="form-control here">
+                                                <input type="password" id="oldpass" name="oldpass" class="form-control here">
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
                                             <label for="newpass" class="col-4 col-form-label">Entrez votre nouveau mot de passe</label> 
                                             <div class="col-8">
-                                                <input type="password" id="newpass" name="newpass" placeholder="New Password" class="form-control here">
+                                                <input type="password" id="newpass" name="newpass" class="form-control here">
                                             </div>
                                         </div> 
 
                                         <div class="form-group row">
                                             <div class="offset-4 col-8">
-                                                <button name="submit" type="submit" class="btn btn-primary">Mettre à jour mes informations</button>
+                                                <button name="submit" type="submit" class="btn btn-primary" style="background: #888888;">Mettre à jour mes informations</button>
                                             </div>
                                         </div>
                                     </form>

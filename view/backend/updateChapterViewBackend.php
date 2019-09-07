@@ -29,30 +29,41 @@ if (isset($_SESSION['pseudo'])) {
     </head>
 
     <body>
-        <div id="header" class="navbar navbar-default navbar-fixed-top">
-            <div class="navbar-header">
-                <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                    <i class="icon-reorder"></i>
-                </button>
+        <nav class="navbar navbar-expand-lg fixed-top" data-background-color="black">
+            <div class="container">
+                <div class="navbar-translate">
+                    <a class="navbar-brand" href="index.php?action=logOut" data-placement="bottom">
+                        Déconnexion
+                    </a>
+                    <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-bar top-bar"></span>
+                        <span class="navbar-toggler-bar middle-bar"></span>
+                        <span class="navbar-toggler-bar bottom-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse bg-primary justify-content-end" id="navigation">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" rel="tooltip" title="Éditez vos chapitres" href="index.php?action=listChaptersBackend">
+                                <p>Chapitres</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" rel="tooltip" title="Gérez et modérez les commentaires" data-placement="bottom" href="index.php?action=getAllComments">
+                                <p>Commentaires</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" rel="tooltip" title="Modifiez votre profil" data-placement="bottom" href="index.php?action=profil">
+                                <p>Profil</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <nav class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li>
-                        <a href="index.php?action=listChaptersBackend">Billets</a>
-                    </li>
-                    <li class="dropdown">
-                      <a href="commentsList.php">Commentaires</a>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav pull-right">
-                    <li class="dropdown">
-                        <a href="index.php?action=logout">Déconnexion</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+        </nav>
 
-        <form action="index.php?action=modifyChapter&amp;id=<?= $chapter['id'] ?>" method="post">
+        <form action="index.php?action=modifyChapter&amp;id=<?= $chapter['id'] ?>" method="post" style="margin-top: 80px;">
             <textarea id="chapterTitle" name="chapterTitle"><?= nl2br(htmlspecialchars($chapter['title'])) ?></textarea>
             <textarea style="height: 500px;" id="chapterContent" name="chapterContent"><?= nl2br(htmlspecialchars($chapter['content'])) ?></textarea>
             <input type="submit" value="Enregistrer la modification" />

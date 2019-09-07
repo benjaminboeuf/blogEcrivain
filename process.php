@@ -7,65 +7,9 @@ require_once "./phpmailer/src/PHPMailer.php";
 require_once "./phpmailer/src/SMTP.php";
 require_once "./phpmailer/src/Exception.php";
 
-// $name = $_POST["name"];
-// $email = $_POST["email"];
-// $message = $_POST["message"];
- 
-// $EmailTo = "jeanforteroche@outlook.fr";
-// $Subject = "Nouveau message - Un billet pour l'Alaska";
- 
-// // prepare email body text
-// $Body = "Nom: ";
-// $Body .= $name;
-// $Body .= "\n";
- 
-// $Body .= "Email: ";
-// $Body .= $email;
-// $Body .= "\n";
- 
-// $Body .= "Message: ";
-// $Body .= $message;
-// $Body .= "\n";
- 
-// // send email
-// $success = mail($EmailTo, $Subject, $Body, "From:".$email);
- 
-// // redirect to success page
-// if ($success){
-//    echo "success";
-// }else{
-//     echo "invalid";
-// }
-
 $name = $_POST["name"];
 $email = $_POST["email"];
 $message = $_POST["message"];
-
-        // $mail = new PHPMailer(true);
-        // $mail->IsSMTP();
-        // $mail->SMTPAuth = true;
-        // // $mail->SMTPSecure = 'tls';
-        // $mail->Host='smtp.gmail.com';
-        // $mail->Port = 465;
-        // $mail->Username = "benjaminboeuf.bdx@gmail.com";
-        // $mail->Password = "8213+benjamin";
-        // $mail->From=$email;
-        // $mail->FromName=$name;
-        // $mail->AddAddress('jeanforteroche@outlook.fr');
-        // $mail->AddReplyTo('benjaminboeuf.bdx@gmail.com');     
-        // $mail->Subject='Nouveau message de '. $name . '- Un Billet pour l\'Alaska';
-        // $mail->Body=$message;
-
-        // if(!$mail->Send()) { //Teste le return code de la fonction
-        //   echo "Erreur: Mail non envoyé";
-        // }
-        // else {     
-        //   echo 'Mail envoyé avec succès';
-        // }
-
-        // $mail->SmtpClose();
-        // unset($mail);
-
 
 $mail = new PHPMailer(true);
 //Enable SMTP debugging. 

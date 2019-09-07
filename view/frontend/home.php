@@ -3,7 +3,6 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="apple-touch-icon" sizes="76x76" href="./assets/img/apple-icon.png">
     <link rel="icon" type="image/png" href="./assets/img/favicon.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
@@ -17,7 +16,7 @@
     <nav class="navbar navbar-expand-lg fixed-top navbar-transparent " color-on-scroll="400">
         <div class="container">
             <div class="navbar-translate">
-                <a class="navbar-brand" href="index.php?action=logPage" rel="" title="Accéder à la partie administration" data-placement="bottom">
+                <a class="navbar-brand" href="index.php?action=logPage" data-placement="bottom">
                 Connexion
                 </a>
                 <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +63,7 @@
             <div class="container">
                 <div class="content-center brand">
                     <img id="logo" class="n-logo homeBlock" src="./assets/img/jl-logo.png" alt="logo">
-                    <h1 id="homeTitle" class="h1-seo homeBlock">UN BILLET POUR L'ALASKA</h1>
+                    <h1 id="homeTitle" class="h1-seo homeBlock">UN BILLET SIMPLE POUR L'ALASKA</h1>
                     <h3 id="homeSubTitle" class="homeBlock"><a href="index.php?action=book" rel="tooltip">Débutez votre voyage</a></h3>
                 </div>
                 <h6 class="category category-absolute">Écrit Par 

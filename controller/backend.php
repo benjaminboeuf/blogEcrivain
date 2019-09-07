@@ -5,7 +5,7 @@ require_once '.\model\ChapterManager.php';
 require_once '.\model\CommentsManager.php';
 require_once '.\model\AdminManager.php';
 
-class Backend extends Manager
+class Backend
 {
 	function listChaptersBackend()
     {
@@ -101,7 +101,7 @@ class Backend extends Manager
     {
     	$adminMana = new AdminManager();
     	$admin = $adminMana->logOut();
-    	header('Location: index.php');
+    	header('Location: index.php?action=home');
     }
 
     function getProfil()

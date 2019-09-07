@@ -22,34 +22,47 @@ if (isset($_SESSION['pseudo'])) {
 
   <body>
 
-    <div id="header" class="navbar navbar-default navbar-fixed-top">
-        <div class="navbar-header">
-            <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target=".navbar-collapse">
-                <i class="icon-reorder"></i>
-            </button>
-        </div>
-        <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Blog</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav">
-                    <a class="nav-item nav-link active" href="index.php">Liste des chapitres</a>
-                    <a class="nav-item nav-link" href="commentsList.php">Gestion des commentaires</a>
-                </div>
-                <div class="navbar-nav pull-right">
-                    <a class="nav-item nav-link" href="logOut.php">Déconnexion</a>
-                </div>
+    <nav class="navbar navbar-expand-lg fixed-top" data-background-color="black">
+        <div class="container">
+            <div class="navbar-translate">
+                <a class="navbar-brand" href="index.php?action=logOut" data-placement="bottom">
+                    Déconnexion
+                </a>
+                <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-bar top-bar"></span>
+                    <span class="navbar-toggler-bar middle-bar"></span>
+                    <span class="navbar-toggler-bar bottom-bar"></span>
+                </button>
             </div>
-        </nav> -->
-        <nav class="collapse navbar-collapse">
+            <div class="collapse navbar-collapse bg-primary justify-content-end" id="navigation">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" rel="tooltip" title="Éditez vos chapitres" href="index.php?action=listChaptersBackend">
+                            <p>Chapitres</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" rel="tooltip" title="Gérez et modérez les commentaires" data-placement="bottom" href="index.php?action=getAllComments">
+                            <p>Commentaires</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" rel="tooltip" title="Modifiez votre profil" data-placement="bottom" href="index.php?action=profil">
+                            <p>Profil</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+        <!-- </nav> -->
+        <!-- <nav class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
                 <li class="dropdown">
-                    <a href="index.php?action=listChaptersBackend">Liste des billets</a>
+                    <a href="index.php?action=listChaptersBackend">Chapitres</a>
                 </li>
                 <li class="dropdown">
-                    <a href="index.php?action=getAllComments">Modération des commentaires</a>
+                    <a href="index.php?action=getAllComments">Commentaires</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav pull-right">
@@ -61,22 +74,22 @@ if (isset($_SESSION['pseudo'])) {
                 </li>
             </ul>
         </nav>
-    </div>
+    </div> -->
 
-    <div id="wrapper">
-        <div id="sidebar-wrapper" class="col-md-1">
-            <div id="sidebar">
-                <a class="list-group-item" href="index.php?action=newChapter"><i class="icon-home icon-1x"></i>Ajouter un billet</a>
+    <div id="wrapper" style="margin-top: 100px;">
+        <div id="sidebar-wrapper" class="container" style="margin-bottom: 40px;">
+            <div id="sidebar" class="container">
+                <a class="list-group-item" href="index.php?action=newChapter" style="color: white; background: #888888; text-align:center; "></i>Ajouter un billet</a>
             </div>
         </div>
-        <div id="main-wrapper" class="col-md-11">
+        <div id="main-wrapper" class="container">
             <div id="main">
                 <?php
                 while ($data = $chapters->fetch())
                 {
                 ?>
-                    <div class="col-md-11">
-                        <table class="table table-bordered table-striped table-condensed">
+                    <div class="container">
+                        <table class="table table-bordered table-striped table-condensed" style="margin-bottom: 40px;">
                             <tbody>
                                 <tr>
                                     <td>
@@ -91,9 +104,9 @@ if (isset($_SESSION['pseudo'])) {
                                         <p><?= nl2br($data['content']) ?></p>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='index.php?action=chapterBeforeChange&amp;id=<?= $data['id'] ?>';">Modifier</button></br>
-                                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='index.php?action=deleteChapter&amp;id=<?= $data['id'] ?>';">Supprimer</button></br>
-                                        <button type="button" class="btn btn-outline-secondary" onclick="window.location.href='index.php?action=chapterComments&amp;id=<?= $data['id'] ?>';">Commentaires</button>
+                                        <button type="button" class="btn btn-outline-secondary" style="background: #888888" onclick="window.location.href='index.php?action=chapterBeforeChange&amp;id=<?= $data['id'] ?>';">Modifier</button></br>
+                                        <button type="button" class="btn btn-outline-secondary" style="background: #888888" onclick="window.location.href='index.php?action=deleteChapter&amp;id=<?= $data['id'] ?>';">Supprimer</button></br>
+                                        <button type="button" class="btn btn-outline-secondary" style="background: #888888" onclick="window.location.href='index.php?action=chapterComments&amp;id=<?= $data['id'] ?>';">Commentaires</button>
                                     </td>
                                 </tr>
                             </tbody>
