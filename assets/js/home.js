@@ -1,6 +1,4 @@
 var home = {
-    logo: $("#logo"),
-    title: $("#homeTitle"),
     subtitle: $("#homeSubTitle"),
 
     initHome: function () {

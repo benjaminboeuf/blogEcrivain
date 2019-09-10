@@ -43,6 +43,7 @@
 				background-color: #294997;
 				opacity: 0.7;
 				border-radius: 1em;
+				margin-bottom: 10px;
 			}
 
 			.chapterList {
@@ -90,6 +91,26 @@
 				/* opacity: 0.2; */
 			}
 
+			.phpCommentContent > i {
+				font-size: 1.3em;
+				height: 20px;
+			}
+
+			.hiddenCheck {
+				opacity: 0;
+				position: absolute;
+				top: 0px;
+				margin: 0;
+				padding: 0;
+				height: 100%;
+				width: 100%;
+			}
+
+			.valid, .cancel {
+				cursor: pointer;
+			}
+			
+
 		</style>
 	</head>
 
@@ -107,7 +128,7 @@
 						<span class="navbar-toggler-bar bottom-bar"></span>
 					</button>
 				</div>
-				<div class="collapse navbar-collapse bg-primary justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
+				<div class="collapse navbar-collapse justify-content-end" id="navigation">
 					<ul class="navbar-nav">
 						<li class="nav-item">
 							<a class="nav-link" href="index.php?action=about">
@@ -166,8 +187,8 @@
       				</div>
 					<div id="commentBoard" class="hide row col-sm-12">
 						<div id="commentBody" class="panel panel-body row col-sm-12">
-							<p>Commentaires</p>
-						</div>
+							<div class="container">Commentaires</div>
+							</div>
 					</div>
 				</div>
 			</div>
@@ -199,6 +220,13 @@
 			</footer>
 		</div>
 
+	<!-- include Google's AJAX API loader -->
+	<script src="http://www.google.com/jsapi"></script>
+	<!-- load JQuery and UI from Google (need to use UI to animate colors) -->
+	<script type="text/javascript">
+	google.load("jqueryui", "1.5.2");
+	</script>
+
 	<script type="text/javascript">
 
 	$(document).ready(function() {
@@ -216,7 +244,12 @@
 
 	function reHeight() {
 		var pageH = $("#chapterBoard").height() + $("#commentBody").height();
-		var pageH = pageH * 1.2;
+		var pageH = pageH + 160;
+
+		if ($("#chapSelector").width() > 180) {
+			pageH = pageH + $("#chapSelector").height();
+		}
+
 		var pageH = pageH + 'px';
 		$("#pagejs").css('height', pageH);
 	};
@@ -239,7 +272,7 @@
 
 		}).responseText);
 
-		$("#commentBody > p").html($.ajax({
+		$("#commentBody > div:nth-child(1)").html($.ajax({
         	type: "GET",
 			url: "/blogEcrivain/index.php",
 			async: false,
@@ -262,9 +295,67 @@
 			},
 
 		}).responseText);
-		
 	};
 		
+	function signaledComment(commentId) {
+		// var he = $(".phpComment").height();
+		var elementContent = "#comment" + commentId + " > .phpCommentContent";
+		var elementCheck = "#comment" + commentId + " > .hiddenCheck";
+		var commentCheck = $(elementCheck);
+		var commentContent = $(elementContent);
+
+		var elementI = "#comment" + commentId + " > i";
+		var commentI = $(elementI);
+
+		setTimeout(function() {
+			commentContent.animate({'opacity':'0'}, 600);
+			commentCheck.animate({'opacity':'1'}, 1000);
+			
+			
+			
+		}, 0);
+		// comment.css('height', he);
+		// comment.width('width', '100%');
+		// comment.html("<div class=\"container\">Signaler le commentaire ?</div> <div class=\"container\"><i class=\"fas fa-check\" style=\"font-size: 2em; margin: 0 20 0 20;\"></i><i class=\"fas fa-times\" style=\"font-size: 2em; margin: 0 20 0 20;\"></i></div>");
+	};
+
+	function validSignal(commentId) {
+		var elementContent = "#comment" + commentId + " > .phpCommentContent";
+		var elementCheck = "#comment" + commentId + " > .hiddenCheck";
+		var commentCheck = $(elementCheck);
+		var commentContent = $(elementContent);
+
+		var elementI = "#comment" + commentId + " .phpCommentContent > i";
+		var commentI = $(elementI);
+
+		$.ajax({
+			type: "GET",
+			url: "/blogEcrivain/index.php",
+			async: false,
+			data: 
+			{
+				"action": "signalComment",
+				"id": commentId
+			},
+		});
+		commentCheck.animate({'opacity':'0'}, 400);
+		commentContent.animate({'opacity':'1'}, 1000);
+		commentI.attr("title", "Commentaire signalé !");
+		commentI.css('color', 'red');
+		commentI.removeAttr("onclick");
+		commentI.css("cursor", "auto")
+	};
+		
+	function cancelSignal (commentId) {
+		var elementContent = "#comment" + commentId + " > .phpCommentContent";
+		var elementCheck = "#comment" + commentId + " > .hiddenCheck";
+		var commentCheck = $(elementCheck);
+		var commentContent = $(elementContent);
+
+		commentCheck.animate({'opacity':'0'}, 400);
+		commentContent.animate({'opacity':'1'}, 1000);
+	
+	};
 		
 	</script>
 

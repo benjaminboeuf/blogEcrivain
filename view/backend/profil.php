@@ -27,26 +27,24 @@ if (isset($_SESSION['pseudo'])) {
                     <a class="navbar-brand" href="index.php?action=logOut" data-placement="bottom">
                         Déconnexion
                     </a>
-                    <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-bar top-bar"></span>
-                        <span class="navbar-toggler-bar middle-bar"></span>
-                        <span class="navbar-toggler-bar bottom-bar"></span>
-                    </button>
                 </div>
-                <div class="collapse navbar-collapse bg-primary justify-content-end" id="navigation">
-                    <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <a class="nav-link" rel="tooltip" title="Éditez vos chapitres" href="index.php?action=listChaptersBackend">
+                <div class="navbar-translate justify-content-end" id="navigation">
+                    <ul class="navbar-nav" style="-ms-flex-direction: row; flex-direction: row;">
+                        <li class="nav-item menubar">
+                            <a class="nav-link menubar" rel="tooltip" title="Éditez vos chapitres" href="index.php?action=listChaptersBackend">
+                                <i class="fas fa-file-signature"></i>
                                 <p>Chapitres</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" rel="tooltip" title="Gérez et modérez les commentaires" data-placement="bottom" href="index.php?action=getAllComments">
+                        <li class="nav-item menubar">
+                            <a class="nav-link menubar" rel="tooltip" title="Gérez et modérez les commentaires" data-placement="bottom" href="index.php?action=getAllComments">
+                                <i class="fas fa-comments"></i>
                                 <p>Commentaires</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" rel="tooltip" title="Modifiez votre profil" data-placement="bottom" href="index.php?action=profil">
+                        <li class="nav-item menubar">
+                            <a class="nav-link menubar" rel="tooltip" title="Modifiez votre profil" data-placement="bottom" href="index.php?action=profil">
+                                <i class="fas fa-user-alt"></i>
                                 <p>Profil</p>
                             </a>
                         </li>
@@ -125,6 +123,6 @@ if (isset($_SESSION['pseudo'])) {
 <?php
 }
 else {
-    echo 'Vous devez être connecté.e pour accéder à cette page :/';
+    echo 'Vous devez être connecté pour accéder à cette page :/';
 }
 ?>

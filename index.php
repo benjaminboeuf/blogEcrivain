@@ -50,6 +50,9 @@ try {
                 throw new Exception('Aucun identifiant de chapitre envoyé'); 
             }
         }
+        elseif ($_GET['action'] == 'signalComment') {
+        	$backend->signalComment($_GET['id']);
+        }
         elseif ($_GET['action'] == 'deleteComment') {
         	$backend->deleteComment($_GET['id']);
         }

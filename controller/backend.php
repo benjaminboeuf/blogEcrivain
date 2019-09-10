@@ -53,14 +53,38 @@ class Backend
     function listAllComments()
     {
     	$commentManager = new CommentManager();
-    	$comments = $commentManager->signaledComments();
+        $comments = $commentManager->signaledComments();
+        
+        $noComments = $commentManager->noSignaledComments();
+        // var_dump($noComments);
 
-    	if ($comments === false) {
+    	if ($comments === false && $noComments === false) {
     		throw new Exception('Impossible d\'afficher les commentaires !');
     	}
     	else {
     		include '.\view\backend\listCommentsView.php';
     	}
+    }
+
+    function signalComment($commentId) {
+        $commentManager = new CommentManager();
+        $comment = $commentManager->signalComment($commentId);
+
+        // $comments = $commentManager->getComment($commentId);
+
+        // echo "<h4>Commentaires :</h4>";
+        // while ($data = $comments->fetch()) {
+        //     echo "<div class=\"container phpComment\" id=\"comment" . $data['id'] . "\">";
+        //         echo "<div class=\"container row\">";
+        //             echo "<div class=\"container col-md-6\"><span style=\"text-decoration: underline;\">Écrit par "; echo $data['author']; echo "</span></div>";
+        //             echo "<div class=\"container col-md-6\"><em>le " . $data['comment_date_fr'] . "</em></div>";
+        //         echo "</div>";
+        //         echo "<div class=\"container row\">";
+        //             echo "<div class=\"container col-11\">" . $data['content'] . "</div>";
+        //             echo "<i class=\"fas fa-exclamation-circle\" style=\"font-size: 1.3em\" cursor=\"pointer\" rel=\"tooltip\" onclick=\"validSignaledComment(" . $data['id'] . ")\"></i>";
+        //         echo "</div>";
+        //     echo "</div>";
+        // }
     }
 
     function deleteComment($id)

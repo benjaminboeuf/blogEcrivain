@@ -42,12 +42,27 @@ class Frontend
 
         echo "<h4>Commentaires :</h4>";
         while ($data = $comments->fetch()) {
-            echo "<div class=\"container phpComment\">";
-                echo "<div class=\"container row\">";
+            echo "<div class=\"container phpComment\" id=\"comment" . $data['id'] . "\">";
+                echo "<div class=\"container row phpCommentContent\">";
                     echo "<div class=\"container col-md-6\"><span style=\"text-decoration: underline;\">Écrit par "; echo $data['author']; echo "</span></div>";
-                    echo "<div class=\"container col-md-6\"><em>le "; echo $data['comment_date_fr']; echo "</em></div>";
+                    echo "<div class=\"container col-md-6\"><em>le " . $data['comment_date_fr'] . "</em></div>";
                 echo "</div>";
-                echo "<div class=\"container\">"; echo $data['content']; echo "</div>";
+                echo "<div class=\"container row phpCommentContent\">";
+                    echo "<div class=\"container col-11\">" . $data['content'] . "</div>";
+                    if ($data['signaled'] == 1) {
+                        echo "<i class=\"fas fa-exclamation-circle\" style=\"color: red\" title=\"Commentaire signalé !\" rel=\"tooltip\"></i>";
+                    }
+                    else {
+                        echo "<i class=\"fas fa-exclamation-circle\" style=\"cursor: pointer\" rel=\"tooltip\" title=\"\" onclick=\"signaledComment(" . $data['id'] . ")\"></i>";
+                    }
+                echo "</div>";
+                echo "<div class=\"hiddenCheck\">";	
+					echo "<div class=\"container\">Signaler le commentaire ?</div>"; 
+					    echo "<div class=\"container\">";
+							echo "<i class=\"fas fa-check valid\" onclick=\"validSignal(" . $data['id'] . ")\" style=\"font-size: 2em; margin: 0 20 0 20;\"></i>";
+							echo "<i class=\"fas fa-times cancel\" onclick=\"cancelSignal(" . $data['id'] . ")\" style=\"font-size: 2em; margin: 0 20 0 20;\"></i>";
+						echo "</div>";
+					echo "</div>";
             echo "</div>";
         }
     }
