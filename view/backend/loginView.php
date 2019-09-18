@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (isset($_COOKIE['pseudo']) && isset($_COOKIE['password'])) {
-    $backend->logIn($_COOKIE['pseudo'], $_COOKIE['password']);
+    $backend->logInCookie($_COOKIE['pseudo'], $_COOKIE['password']);
 }
 ?>
 
@@ -41,19 +41,19 @@ if (isset($_COOKIE['pseudo']) && isset($_COOKIE['password'])) {
             </div>
             <div class="container">
                 <form action="index.php?action=login" method="post">
-                    <div class="form-group col-lg-8">
+                    <div class="form-group col-lg-8" style="margin-bottom: 20px">
                         <label for="pseudo">Pseudo</label>
-                        <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Entrez votre pseudo">
+                        <input type="text" class="form-control" id="pseudo" name="pseudo" placeholder="Entrez votre pseudo" required>
                     </div>
-                    <div class="form-group col-lg-8">
-                        <label for="password">Password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Entrez votre mot de passe">
+                    <div class="form-group col-lg-8" style="margin-bottom: 20px">
+                        <label for="password">Mot de passe</label>
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Entrez votre mot de passe" required>
                     </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input" id="checkLogin">
-                        <label class="form-check-label" for="checkLogin">Restez connecté.e</label>
+                    <div class="form-check" style="margin: 0 0 15 0">
+                        <input type="checkbox" class="form-check-input" id="checkLogin" name="checkLogin" value="1" style="opacity: 1; visibility: unset; margin-left: 10px; font-size: 1.5em;">
+                        <label class="form-check-label" for="checkLogin">Restez connecté <em style="font-size: 0.8em; font-weight: lighter;">(Vous acceptez l'utilisation de cookie)</em></label>
                     </div>
-                    <button type="submit" class="btn btn-primary" onclick="window.location.href='index.php?action=login';">Valider</button>
+                    <button type="submit" class="btn btn-primary">Valider</button>
                     <!-- <a href="index.php?action=newPass">Meh</a> -->
                 </form>
             </div>

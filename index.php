@@ -12,9 +12,6 @@ try {
 		if ($_GET['action'] == 'listChaptersBackend') {
             $backend->listChaptersBackend();
         }
-        elseif ($_GET['action'] == 'newPass') {
-        	$backend->newPass();
-         }
         elseif ($_GET['action'] == 'newChapter') {
  			include 'view/backend/addchapterViewBackend.php';
         }
@@ -50,6 +47,19 @@ try {
                 throw new Exception('Aucun identifiant de chapitre envoyé'); 
             }
         }
+        elseif ($_GET['action'] == 'addComment') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                if (!empty($_POST['name']) && !empty($_POST['message'])) {
+                    $backend->addComment($_GET['id'], $_POST['name'], $_POST['message']);
+                }
+                else {
+                    throw new Exception('Tous les champs ne sont pas remplis !');
+                }
+            }
+            else {
+                throw new Exception('Aucun identifiant de chapitre envoyé');
+            }
+        }
         elseif ($_GET['action'] == 'signalComment') {
         	$backend->signalComment($_GET['id']);
         }
@@ -68,7 +78,10 @@ try {
             }
         }
         elseif ($_GET['action'] == 'login') {
-        	$backend->logIn($_POST['pseudo'] ,$_POST['password']);
+            $check = isSet($_POST['checkLogin']) ? 1 : 0;
+            if (isset($_POST['pseudo']) && isset($_POST['password'])) {
+                $backend->logIn($_POST['pseudo'] ,$_POST['password'], $check);
+            }
         }
         elseif ($_GET['action'] == 'logOut') {
         	$backend->logOut();

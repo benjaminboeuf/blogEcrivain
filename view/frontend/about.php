@@ -91,7 +91,7 @@
         parution en tête des ventes annuelles en France et connaissent un succès international. </p>
         <p>Jean Forteroche a écrit quelques nouvelles et a réalisé un court métrage pour La 
             Croix Rouge, <em>La missive du Boiteux</em>. 
-        Son roman <em>L'appel du triton chahuteur</em>a été adapté en bande dessinée par Vivel. 
+        Son roman <em>L'appel du triton chahuteur</em> a été adapté en bande dessinée par Vivel. 
         La première partie est sortie le 31 aout 2010, la seconde partie le 16 mars 2011.
         Son roman <em>Les vacanciers des îles perdues</em> a été adapté en série d'animation 
         par Tif Parl. La série est sortie le 12 septembre 2013.</p>

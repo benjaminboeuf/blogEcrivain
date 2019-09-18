@@ -82,13 +82,7 @@ if (isset($_SESSION['pseudo'])) {
                                                 <input id="pseudo" name="pseudo" value="<?= $data['login']?>" class="form-control here" type="text">
                                             </div>
                                         </div>
-                              
-                              <!-- <div class="form-group row">
-                                <label for="email" class="col-4 col-form-label">Email*</label> 
-                                <div class="col-8">
-                                  <input id="email" name="email" placeholder="Email" class="form-control here" required="required" type="text">
-                                </div>
-                              </div> -->
+                                        
                                         <div class="form-group row">
                                             <label for="oldpass" class="col-4 col-form-label">Entrez votre mot de passe actuel</label> 
                                             <div class="col-8">

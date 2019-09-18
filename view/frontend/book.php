@@ -88,7 +88,7 @@
 				margin-bottom: 15px;
 				background-color: rgba(255, 255, 255, 0.1);
 				border-radius: 1em;
-				/* opacity: 0.2; */
+				min-height: 60px;
 			}
 
 			.phpCommentContent > i {
@@ -96,12 +96,19 @@
 				height: 20px;
 			}
 
+			.phpCommentContent {
+				z-index: 25!important;
+				min-height: 25px;
+				align-content: center;
+			}
+
 			.hiddenCheck {
 				opacity: 0;
-				position: absolute;
+				position: absolute!important;
 				top: 0px;
 				margin: 0;
 				padding: 0;
+				min-height: 60px;
 				height: 100%;
 				width: 100%;
 			}
@@ -109,7 +116,46 @@
 			.valid, .cancel {
 				cursor: pointer;
 			}
+
+			#newComment {
+				margin-top: 20px;
+			}
+
+			#newComment button {
+				background: white;
+				color: #294997;
+			}
 			
+			[placeholder] {
+				color: white;
+			}
+
+			#getForm {
+				background: green;
+				height: 60px;
+				margin-bottom: 30px;
+				opacity: 1;
+				z-index: 1000;
+			}
+
+			#formComment {
+				background: yellow;
+				display: none;
+				margin-bottom: 30px;
+				opacity: 0;
+			}
+
+			form {
+				margin: 0;
+			}
+
+			#commentSend {
+				background: orange;
+				height: 60px!important;
+				display: none;
+				margin-bottom: 30px;
+				opacity: 0;
+			}
 
 		</style>
 	</head>
@@ -187,7 +233,7 @@
       				</div>
 					<div id="commentBoard" class="hide row col-sm-12">
 						<div id="commentBody" class="panel panel-body row col-sm-12">
-							<div class="container">Commentaires</div>
+							<div class="container"></div>
 							</div>
 					</div>
 				</div>
@@ -240,11 +286,15 @@
 		$(window).on('click', function() {
 			reHeight();
 		});
+		$("#addButton").on('click', function() {
+			console.log('onclick');
+			addNewComment();
+		})
 	});
 
 	function reHeight() {
 		var pageH = $("#chapterBoard").height() + $("#commentBody").height();
-		var pageH = pageH + 160;
+		var pageH = pageH + 175;
 
 		if ($("#chapSelector").width() > 180) {
 			pageH = pageH + $("#chapSelector").height();
@@ -310,6 +360,8 @@
 		setTimeout(function() {
 			commentContent.animate({'opacity':'0'}, 600);
 			commentCheck.animate({'opacity':'1'}, 1000);
+			commentContent.css('z-index', '1');
+			commentCheck.css('z-index', '25');
 			
 			
 			
@@ -343,7 +395,9 @@
 		commentI.attr("title", "Commentaire signalé !");
 		commentI.css('color', 'red');
 		commentI.removeAttr("onclick");
-		commentI.css("cursor", "auto")
+		commentI.css("cursor", "auto");
+		commentContent.css('z-index', '25');
+		commentCheck.css('z-index', '1');
 	};
 		
 	function cancelSignal (commentId) {
@@ -354,9 +408,31 @@
 
 		commentCheck.animate({'opacity':'0'}, 400);
 		commentContent.animate({'opacity':'1'}, 1000);
-	
+		commentContent.css('z-index', '25');
+		commentCheck.css('z-index', '1');
 	};
-		
+	
+	function addNewComment () {
+		console.log('aaa');
+		var newC = "#getForm";
+		newC = $(newC);
+		newC.css('display', 'none');
+		newC.animate({'opacity' : '0'}, 400);
+
+		var form = $("#formComment");
+		form.css('display', 'unset');
+		form.animate({'opacity' : '1'}, 1000);
+	};
+
+	function commentSend () {
+		// var form = $("#formComment");
+		// var com = $("#commentSend");
+		// form.css('display', 'none');
+		// com.css('display', 'unset');
+		// form.animate({'opacity' : '0'}, 400);
+		// com.animate({'opacity' : '1'}, 1000);
+	};
+
 	</script>
 
 	</body>

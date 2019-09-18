@@ -66,25 +66,14 @@ class Backend
     	}
     }
 
+    function addComment($chapterId, $name, $message) {
+        $commentManager = new CommentManager();
+        $comment = $commentManager->newComment($chapterId, $name, $message);
+    }
+
     function signalComment($commentId) {
         $commentManager = new CommentManager();
         $comment = $commentManager->signalComment($commentId);
-
-        // $comments = $commentManager->getComment($commentId);
-
-        // echo "<h4>Commentaires :</h4>";
-        // while ($data = $comments->fetch()) {
-        //     echo "<div class=\"container phpComment\" id=\"comment" . $data['id'] . "\">";
-        //         echo "<div class=\"container row\">";
-        //             echo "<div class=\"container col-md-6\"><span style=\"text-decoration: underline;\">Écrit par "; echo $data['author']; echo "</span></div>";
-        //             echo "<div class=\"container col-md-6\"><em>le " . $data['comment_date_fr'] . "</em></div>";
-        //         echo "</div>";
-        //         echo "<div class=\"container row\">";
-        //             echo "<div class=\"container col-11\">" . $data['content'] . "</div>";
-        //             echo "<i class=\"fas fa-exclamation-circle\" style=\"font-size: 1.3em\" cursor=\"pointer\" rel=\"tooltip\" onclick=\"validSignaledComment(" . $data['id'] . ")\"></i>";
-        //         echo "</div>";
-        //     echo "</div>";
-        // }
     }
 
     function deleteComment($id)
@@ -105,17 +94,22 @@ class Backend
     	return $comment;
     }
 
-    function newPass() {
-    	$adminMana = new AdminManager();
-    	$admin = $adminMana->addPassword();
-    }
-
-    function logIn($pseudo, $password)
+    function logIn($pseudo, $password, $check)
     {
     	$adminMana = new AdminManager();
-    	$admin = $adminMana->logIn($pseudo, $password);
+    	$admin = $adminMana->logIn($pseudo, $password, $check);
     	
     	if (isset($_SESSION['pseudo'])) {
+    		header('Location: index.php?action=listChaptersBackend');
+    	}
+    	return $admin;
+    }
+
+    function logInCookie($pseudo, $password) {
+        $adminMana = new AdminManager();
+        $admin = $adminMana->logInCookie($pseudo, $password);
+        
+        if (isset($_SESSION['pseudo'])) {
     		header('Location: index.php?action=listChaptersBackend');
     	}
     	return $admin;
@@ -142,11 +136,7 @@ class Backend
        	$adminMana = new AdminManager();
     	$admin = $adminMana->updateProfile($username, $pseudo, $oldpass, $newpass);
 
-    	if (!$admin == null) {
-    		echo 'Votre profil a bien été mis à jour :)';
-    	}
-
-    	header('Location: index.php?action=profil');
+    	// header('Refresh: 5;URL=index.php?action=profil');
     	return $admin;
     }
 }
