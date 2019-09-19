@@ -131,7 +131,6 @@
 			}
 
 			#getForm {
-				background: green;
 				height: 60px;
 				margin-bottom: 30px;
 				opacity: 1;
@@ -139,7 +138,6 @@
 			}
 
 			#formComment {
-				background: yellow;
 				display: none;
 				margin-bottom: 30px;
 				opacity: 0;
@@ -150,7 +148,6 @@
 			}
 
 			#commentSend {
-				background: orange;
 				height: 60px!important;
 				display: none;
 				margin-bottom: 30px;
@@ -286,10 +283,10 @@
 		$(window).on('click', function() {
 			reHeight();
 		});
-		$("#addButton").on('click', function() {
-			console.log('onclick');
-			addNewComment();
-		})
+		// $("#addButton").on('click', function() {
+		// 	console.log('onclick');
+		// 	addNewComment();
+		// })
 	});
 
 	function reHeight() {
@@ -432,6 +429,38 @@
 		// form.animate({'opacity' : '0'}, 400);
 		// com.animate({'opacity' : '1'}, 1000);
 	};
+
+	$(document).ready(function() {
+		$('#form').submit( function() {
+			var name = $('#name').val();
+			var commentaire = $('#message').val();
+			if (name != '' && commentaire != '') {
+				$.post('./assets/ajaxComment.php', {name:name, commentaire:commentaire}, function(data){
+					var xmlData = data.getElementsByTagName('com')[0];
+					var ret = xmlData.getElementsByTagName('ret')[0].firstChild.nodeValue;
+					var xmlname = xmlData.getElementsByTagName('name')[0].firstChild.nodeValue;
+					var xmlCommentaire = xmlData.getElementsByTagName('commentaire')[0].firstChild.nodeValue;
+					if (ret) {
+						$('#comment').prepend('<p class="last"><strong>'+xmlname+'</strong> a dit :<br />'+xmlCommentaire+'</p>');
+						$('#message').val('').focus();
+						$('#message').after('<span class="ok">Commentaire ajouté avec succès</span>');
+					}
+					else {
+						$('#message').after('<span class="erreur">Erreur lors de l\'ajout du commentaire</span>');
+					}
+				}, 'xml');
+			}
+			else {
+				if (name == '')
+					$('#name').after('<span class="erreur">Champ requis</span>');
+				if (commentaire == '')
+					$('#message').after('<span class="erreur">Champ requis</span>');
+				$('.erreur').hide().fadeIn('slow');
+			}
+			
+			return false;
+    	}); 
+	});
 
 	</script>
 
