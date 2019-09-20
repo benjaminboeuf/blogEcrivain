@@ -11,6 +11,11 @@ class Backend
     {
         $chapterManager = new ChapterManager();
         $chapters = $chapterManager->getChapters();
+        $nbChapters = $chapterManager->countChapters();
+        
+        $commentManager = new CommentManager();
+        $nbComments = $commentManager->countComments();
+        $nbSignalComments = $commentManager->countSignalComments();
 
         include '.\view\backend\listChaptersViewBackend.php';
     }
@@ -34,7 +39,6 @@ class Backend
     	$chapter = $chapterManager->getChapter($id);
 
     	include '.\view\backend\updateChapterViewBackend.php';
-    	// header('Location: updateChapterViewBackend.php');
     }
 
     function modifyChapter($id, $title, $content)
@@ -47,6 +51,19 @@ class Backend
         } 
         else {
         	header('Location: index.php?action=listChaptersBackend');
+        }
+    }
+
+    function deleteChapter($id) {
+        $chapterManager = new ChapterManager();
+        $chapter = $chapterManager->deleteChapter($id);
+        
+        if ($chapter === false) {
+            throw new Exception('Impossible de supprimer ce chapitre !');
+        } 
+        else {
+            echo '<div class="container" style="text-align: center; font-size: 1.3em; color: #294997; margin: 20 0 20 0">Ce chapitre a bien été supprimé !</div>';
+        	header('Refresh: 3;URL= index.php?action=listChaptersBackend');
         }
     }
 
@@ -69,6 +86,14 @@ class Backend
     function addComment($chapterId, $name, $message) {
         $commentManager = new CommentManager();
         $comment = $commentManager->newComment($chapterId, $name, $message);
+
+        if ($comment === false) {
+            throw new Exception('Impossible d\'ajouter ce commentaire !');
+        } 
+        else {
+            echo '<div class="container" style="text-align: center; font-size: 1.3em; color: #294997; margin: 20 0 20 0">Votre commentaire a été ajouté !</div>';
+        	header("Refresh: 3;URL=" . $_SERVER['HTTP_REFERER']);
+        }
     }
 
     function signalComment($commentId) {
@@ -81,16 +106,18 @@ class Backend
     	$commentManager = new CommentManager();
     	$comment = $commentManager->deleteComment($id);
 
-		header('Location: index.php?action=getAllComments');
-
+        echo '<div class="container" style="text-align: center; font-size: 1.3em; color: #294997; margin: 20 0 20 0">Ce commentaire a bien été supprimé !</div>';
+		header('Refresh: 3;URL= index.php?action=getAllComments');
     	return $comment;
     }
 
     function approveComment($id)
     {
     	$commentManager = new CommentManager();
-    	$comment = $commentManager->approveComment($id);
-    	header('Location: index.php?action=getAllComments');
+        $comment = $commentManager->approveComment($id);
+        
+        echo '<div class="container" style="text-align: center; font-size: 1.3em; color: #294997; margin: 20 0 20 0">Ce commentaire a bien été approuvé !</div>';
+    	header('Refresh: 3;URL= index.php?action=getAllComments');
     	return $comment;
     }
 

@@ -70,37 +70,35 @@ if (isset($_SESSION['pseudo'])) {
                                     <form action="index.php?action=updateProfile" method="post">
                                         <?php $data = $admin->fetch() ?>
                                         <div class="form-group row">
-                                            <label for="username" class="col-4 col-form-label">Prénom et nom</label> 
-                                            <div class="col-8">
+                                            <label for="username" class="col-sm-4 col-form-label">Prénom et nom</label> 
+                                            <div class="col-sm-8">
                                                 <input id="username" name="username" value="<?= $data['username']?>" class="form-control here" type="text">
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="pseudo" class="col-4 col-form-label">Pseudo</label> 
-                                            <div class="col-8">
+                                            <label for="pseudo" class="col-sm-4 col-form-label">Pseudo</label> 
+                                            <div class="col-sm-8">
                                                 <input id="pseudo" name="pseudo" value="<?= $data['login']?>" class="form-control here" type="text">
                                             </div>
                                         </div>
                                         
                                         <div class="form-group row">
-                                            <label for="oldpass" class="col-4 col-form-label">Entrez votre mot de passe actuel</label> 
-                                            <div class="col-8">
+                                            <label for="oldpass" class="col-sm-4 col-form-label">Entrez votre mot de passe actuel</label> 
+                                            <div class="col-sm-8">
                                                 <input type="password" id="oldpass" name="oldpass" class="form-control here">
                                             </div>
                                         </div>
 
                                         <div class="form-group row">
-                                            <label for="newpass" class="col-4 col-form-label">Entrez votre nouveau mot de passe</label> 
-                                            <div class="col-8">
+                                            <label for="newpass" class="col-sm-4 col-form-label">Entrez votre nouveau mot de passe</label> 
+                                            <div class="col-sm-8">
                                                 <input type="password" id="newpass" name="newpass" class="form-control here">
                                             </div>
                                         </div> 
 
-                                        <div class="form-group row">
-                                            <div class="offset-4 col-8">
-                                                <button name="submit" type="submit" class="btn btn-primary" style="background: #888888;">Mettre à jour mes informations</button>
-                                            </div>
+                                        <div class="offset-sm-3 container">
+                                            <button name="submit" type="submit" class="btn btn-primary" style="background: #888888;">Mettre à jour mes informations</button>   
                                         </div>
                                     </form>
                                 </div>

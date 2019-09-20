@@ -3,10 +3,10 @@
 
 <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+    <link rel="icon" type="image/png" href="./assets/img/book-3057902_1920.png">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <title>
-        Billet pour l'Alaska
+        Billet Simple pour l'Alaska
     </title>
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
 </head>
@@ -25,7 +25,7 @@
                     <span class="navbar-toggler-bar bottom-bar"></span>
                 </button>
             </div>
-            <div class="collapse navbar-collapse bg-primary justify-content-end" id="navigation" data-nav-image="./assets/img/blurred-image-1.jpg">
+            <div class="collapse navbar-collapse bg-primary justify-content-end" id="navigation" style="max-width: 250px;">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?action=about">
@@ -77,7 +77,7 @@
                 <nav>
                     <ul>
                         <li>
-                            <a href="#">
+                            <a href="index.php?action=legal">
                                 Mentions légales
                             </a>
                         </li>

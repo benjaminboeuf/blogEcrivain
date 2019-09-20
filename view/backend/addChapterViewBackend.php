@@ -61,8 +61,10 @@ if (isset($_SESSION['pseudo'])) {
             </div>
         </nav>
 
-        <form action="index.php?action=addChapter" method="post" style="margin-top: 80px;">
-            <textarea id="chapterTitle" name="chapterTitle">Entrez votre <strong>titre</strong> ici</textarea>
+        <form action="index.php?action=addChapter" method="post" style="margin-top: 100px;">
+            <div class="container" style="max-width: 450px;">
+                <input type="text" id="chapterTitle" name="chapterTitle" class="form-control here" style="margin-bottom: 30px;" value="Entrez votre titre ici">
+            </div>
             <textarea id="chapterContent" name="chapterContent">Entrez votre <strong>texte</strong> ici</textarea>
             <input type="submit" value="Enregistrer" />
         </form>

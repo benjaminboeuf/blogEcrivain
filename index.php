@@ -20,9 +20,7 @@ try {
         }
         elseif ($_GET['action'] == 'addChapter') {
             if (!empty($_POST['chapterTitle']) && !empty($_POST['chapterContent'])) {
-            	// echo $_POST['chapterTitle'];
-            	// echo $_POST['chapterContent'];
-                $backend->addChapter($_POST['chapterTitle'], $_POST['chapterContent']);
+                $backend->addChapter(htmlspecialchars($_POST['chapterTitle']), $_POST['chapterContent']);
             } 
             else {
                 throw new Exception('Tous les champs ne sont pas remplis !');
@@ -47,10 +45,15 @@ try {
                 throw new Exception('Aucun identifiant de chapitre envoyé'); 
             }
         }
+        else if ($_GET['action'] == 'deleteChapter') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                $backend->deleteChapter($_GET['id']);
+            }
+        }
         elseif ($_GET['action'] == 'addComment') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
                 if (!empty($_POST['name']) && !empty($_POST['message'])) {
-                    $backend->addComment($_GET['id'], $_POST['name'], $_POST['message']);
+                    $backend->addComment($_GET['id'], htmlspecialchars($_POST['name']), htmlspecialchars($_POST['message']));
                 }
                 else {
                     throw new Exception('Tous les champs ne sont pas remplis !');
@@ -80,7 +83,7 @@ try {
         elseif ($_GET['action'] == 'login') {
             $check = isSet($_POST['checkLogin']) ? 1 : 0;
             if (isset($_POST['pseudo']) && isset($_POST['password'])) {
-                $backend->logIn($_POST['pseudo'] ,$_POST['password'], $check);
+                $backend->logIn(htmlspecialchars($_POST['pseudo']) ,$_POST['password'], $check);
             }
         }
         elseif ($_GET['action'] == 'logOut') {
@@ -90,9 +93,8 @@ try {
         	$backend->getProfil();
         }
         elseif ($_GET['action'] == 'updateProfile') {
-        	$backend->updateProfile($_POST['username'], $_POST['pseudo'], $_POST['oldpass'], $_POST['newpass']);
+        	$backend->updateProfile(htmlspecialchars($_POST['username']), htmlspecialchars($_POST['pseudo']), $_POST['oldpass'], $_POST['newpass']);
         }
-        // FRONT END
         elseif ($_GET['action'] == 'home') {
             $frontend->getHome();
         }
@@ -126,6 +128,9 @@ try {
                 throw new Exception('Comments need an id');
             }
         }
+        elseif ($_GET['action'] == 'legal') {
+            include 'view/frontend/legal.php';
+       }
 	}
 	else {
 		if (isset($_SESSION['pseudo'])) {

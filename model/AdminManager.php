@@ -17,12 +17,10 @@ class AdminManager extends Manager
 			$isPwOk = password_verify($password, $q['password']);
 			if ($isPwOk) 
 			{
-				echo $check;
 				session_start();
 				$_SESSION['pseudo'] = $pseudo;
 
 				if ($check == 1) {
-					echo $check;
 					setcookie('pseudo', $pseudo, time() + 365*24*3600, null, null, false, true);
 					setcookie('password', $q['password'], time() + 365*24*3600, null, null, false, true);
 				}
@@ -48,15 +46,12 @@ class AdminManager extends Manager
 
 		if ($req)
 		{
-			// $isPwOk = password_verify($password, $q['password']);
 			if ($password == $q['password']) 
 			{
-				echo ('bla');
 				if (!isset($_SESSION['pseudo'])) {
 					session_start();
 					$_SESSION['pseudo'] = $pseudo;
 				}
-				// header('Location: index.php?action=listChaptersViewBackend');
 			}
 			else {
 				echo 'Mauvais identifiant ou mot de passe :(';

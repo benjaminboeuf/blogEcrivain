@@ -55,8 +55,13 @@ if (isset($_SESSION['pseudo'])) {
 
         <div id="wrapper" style="margin-top: 100px;">
             <div id="sidebar-wrapper" class="container" style="margin-bottom: 40px;">
+                <div class="container" style="margin-bottom: 45px; color: #7080fb;">
+                    <p style="font-weight: bold">Nombre de Chapitres : <?= $nbChapters[0] ?><p>
+                    <p style="font-weight: bold">Nombre de Commentaires : <?= $nbComments[0] ?><p>
+                    <p style="font-weight: bold">Nombre de Commentaires Signalés : <?= $nbSignalComments[0] ?><p>
+                </div>
                 <div id="sidebar" class="container">
-                    <a class="list-group-item" href="index.php?action=newChapter" style="color: white; background: #888888; text-align:center; "></i>Ajouter un billet</a>
+                    <a class="list-group-item" href="index.php?action=newChapter" style="color: white; background: #7080fb; text-align:center; "></i>Ajouter un billet</a>
                 </div>
             </div>
             <div id="main-wrapper" class="container">
@@ -66,13 +71,13 @@ if (isset($_SESSION['pseudo'])) {
                     {
                     ?>
                         <div class="container">
-                            <table class="table table-bordered table-striped table-condensed" style="margin-bottom: 40px;">
+                            <table class="table table-bordered table-striped table-responsive" style="margin-bottom: 40px;">
                                 <tbody>
                                     <tr>
-                                        <td>
-                                            <h3><?= $data['title'] ?></h3>
+                                        <td style="min-width: 250px;">
+                                            <h3 style="font-size: 1.2em;"><?= $data['title'] ?></h3>
                                         </td>
-                                        <td class="col-sm-2">
+                                        <td>
                                             <em>le <?= $data['creation_date_fr'] ?></em>
                                         </td>
                                     </tr>
@@ -81,9 +86,8 @@ if (isset($_SESSION['pseudo'])) {
                                             <p><?= nl2br($data['content']) ?></p>
                                         </td>
                                         <td>
-                                            <button type="button" class="btn btn-outline-secondary" style="background: #888888" onclick="window.location.href='index.php?action=chapterBeforeChange&amp;id=<?= $data['id'] ?>';">Modifier</button></br>
-                                            <button type="button" class="btn btn-outline-secondary" style="background: #888888" onclick="window.location.href='index.php?action=deleteChapter&amp;id=<?= $data['id'] ?>';">Supprimer</button></br>
-                                            <button type="button" class="btn btn-outline-secondary" style="background: #888888" onclick="window.location.href='index.php?action=chapterComments&amp;id=<?= $data['id'] ?>';">Commentaires</button>
+                                            <button type="button" class="btn btn-outline-secondary btn-sm" style="background: #7080fb;" onclick="window.location.href='index.php?action=chapterBeforeChange&amp;id=<?= $data['id'] ?>';">Modifier</button>
+                                            <button type="button" class="btn btn-outline-secondary btn-sm" style="background: #7080fb" onclick="window.location.href='index.php?action=deleteChapter&amp;id=<?= $data['id'] ?>';">Supprimer</button>
                                         </td>
                                     </tr>
                                 </tbody>

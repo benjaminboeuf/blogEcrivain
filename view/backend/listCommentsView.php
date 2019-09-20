@@ -53,21 +53,21 @@ if (isset($_SESSION['pseudo'])) {
             </div>
         </nav>
 
-        <div id="main-wrapper" class="container" style="margin-top: 80px;">
+        <div id="main-wrapper" class="container" style="margin-top: 120px;">
             <div id="main">
                 <?php
                 while ($data = $comments->fetch())
                 {
                 ?>
                     <div class="container" style="margin-botom: 30px;">
-                        <table class="table table-bordered table-striped ">
+                        <table class="table table-bordered table-striped table-responsive">
                             <tbody>
                                 <tr style="background: rgba(255, 0, 0, 0.1);">
-                                    <td>
+                                    <td style="min-width: 250px;">
                                         <h5><?= $data['title'] ?></h5>
                                         <p>par <?= $data['author'] ?></p>
                                     </td>
-                                    <td class="col-sm-2">
+                                    <td>
                                         <p style="font-size: 1em;">le <?= $data['comment_date_fr'] ?> <!-- par <?= $data['author'] ?> --></p>
                                     </td>
                                 </tr>
@@ -76,8 +76,8 @@ if (isset($_SESSION['pseudo'])) {
                                         <p><?= nl2br($data['content']) ?></p>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-secondary" onclick="window.location.href='index.php?action=deleteComment&amp;id=<?= $data['id'] ?>';">Supprimer</button>
-                                        <button type="button" class="btn btn-secondary" onclick="window.location.href='index.php?action=approveComment&amp;id=<?= $data['id'] ?>';">Approuver</button>
+                                        <button type="button" class="btn btn-secondary btn-sm" style="background: #7080fb" onclick="window.location.href='index.php?action=deleteComment&amp;id=<?= $data['id'] ?>';">Supprimer</button>
+                                        <button type="button" class="btn btn-secondary btn-sm" style="background: #7080fb" onclick="window.location.href='index.php?action=approveComment&amp;id=<?= $data['id'] ?>';">Approuver</button>
                                     </td>
                                 </tr>
                             </tbody>
@@ -90,14 +90,14 @@ if (isset($_SESSION['pseudo'])) {
                 {
                 ?>
                     <div class="container" style="margin-botom: 30px;">
-                        <table class="table table-bordered table-striped">
+                        <table class="table table-bordered table-striped table-responsive">
                             <tbody>
-                                <tr style="background: rgba(0, 0, 200, 0.1)">
-                                    <td>
+                                <tr>
+                                    <td style="min-width: 250px;">
                                         <h5><?= $data['title'] ?></h5>
                                         <p>par <?= $data['author'] ?></p>
                                     </td>
-                                    <td class="col-sm-2">
+                                    <td>
                                         <p style="font-size: 1em;">le <?= $data['comment_date_fr'] ?> <!-- par <?= $data['author'] ?> --></p>
                                     </td>
                                 </tr>
@@ -106,7 +106,7 @@ if (isset($_SESSION['pseudo'])) {
                                         <p><?= nl2br($data['content']) ?></p>
                                     </td>
                                     <td>
-                                        <button type="button" class="btn btn-secondary" onclick="window.location.href='index.php?action=deleteComment&amp;id=<?= $data['id'] ?>';">Supprimer</button>
+                                        <button type="button" class="btn btn-secondary btn-sm" style="background: #7080fb" onclick="window.location.href='index.php?action=deleteComment&amp;id=<?= $data['id'] ?>';">Supprimer</button>
                                     </td>
                                 </tr>
                             </tbody>

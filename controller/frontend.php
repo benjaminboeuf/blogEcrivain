@@ -14,10 +14,6 @@ class Frontend
     {
         $chapterManager = new ChapterManager();
         $sommaire = $chapterManager->getSommaire();
-        // $data = $sommaire->fetch();
-        // $sommaire->rowCount();
-        // var_dump($sommaire);
-        // var_dump($sommaire->fetch());
         include '.\view\frontend\book.php';
     }
 
@@ -48,7 +44,7 @@ class Frontend
                     echo "<div class=\"container col-md-6\"><em>le " . $data['comment_date_fr'] . "</em></div>";
                 echo "</div>";
                 echo "<div class=\"container row phpCommentContent\">";
-                    echo "<div class=\"container col-11\">" . $data['content'] . "</div>";
+                    echo "<div class=\"container col-md-11\">" . $data['content'] . "</div>";
                     if ($data['signaled'] == 1) {
                         echo "<i class=\"fas fa-exclamation-circle\" style=\"color: red\" title=\"Commentaire signalé !\" rel=\"tooltip\"></i>";
                     }
@@ -68,13 +64,12 @@ class Frontend
         echo "<div class=\"container\" id=\"newComment\">";
             echo "<div class=\"container\" id=\"getForm\" onclick=\"addNewComment\"><button id=\"addButton\" class=\"btn btn-secondary\" onclick=\"addNewComment()\">Ajouter un commentaire</button></div>";
             echo "<div class=\"container\" id=\"formComment\">";
-                echo "<form>";
+                echo "<form action=\"index.php?action=addComment&amp;id=" . $id . "\" method=\"post\">";
                     echo "<div class=\"form-group row col-sm-6\"><input type=\"text\" class=\"form-control\" id=\"name\" name=\"name\" placeholder=\"Entrer votre nom\" required></div>";
                     echo "<div class=\"form-group\"><textarea id=\"message\" name=\"message\" class=\"form-control\" rows=\"5\" placeholder=\"Entrer votre message\" required></textarea></div>";
-                    echo "<button type=\"submit\" id=\"commentSubmit\" class=\"btn btn-secondary btn-sm\" onclick=\"commentSend()\">Envoyer</button>";
+                    echo "<button type=\"submit\" id=\"commentSubmit\" class=\"btn btn-secondary btn-sm\">Envoyer</button>";
                 echo "</form>";
             echo "</div>";
-            echo "<div class=\"container\" id=\"commentSend\">Commentaire envoyé !</div>";
         echo "</div>";
     }
 }

@@ -61,8 +61,10 @@ if (isset($_SESSION['pseudo'])) {
             </div>
         </nav>
 
-        <form action="index.php?action=modifyChapter&amp;id=<?= $chapter['id'] ?>" method="post" style="margin-top: 80px;">
-            <textarea id="chapterTitle" name="chapterTitle"><?= nl2br(htmlspecialchars($chapter['title'])) ?></textarea>
+        <form action="index.php?action=modifyChapter&amp;id=<?= $chapter['id'] ?>" method="post" style="margin-top: 100px;">
+            <div class="container" style="max-width: 450px;">
+                <input type="text" id="chapterTitle" name="chapterTitle" class="form-control here" style="margin-bottom: 30px;" value="<?= nl2br(htmlspecialchars($chapter['title'])) ?>">
+            </div>
             <textarea style="height: 500px;" id="chapterContent" name="chapterContent"><?= nl2br(htmlspecialchars($chapter['content'])) ?></textarea>
             <input type="submit" value="Enregistrer la modification" />
         </form>

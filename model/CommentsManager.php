@@ -81,4 +81,20 @@ class CommentManager extends Manager
        
         return $signal;     
     }
+
+    public function countComments() {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT COUNT(*) FROM comment');
+        $com = $req->fetch();
+
+        return $com;
+    }
+
+    public function countSignalComments() {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT COUNT(*) FROM comment WHERE signaled = 1');
+        $comS = $req->fetch();
+
+        return $comS;
+    }
 }

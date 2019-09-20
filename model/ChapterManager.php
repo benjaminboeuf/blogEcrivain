@@ -51,6 +51,14 @@ class ChapterManager extends Manager
 
     }
 
+    public function countChapters() {
+        $db = $this->dbConnect();
+        $req = $db->query('SELECT COUNT(*) FROM post');
+        $nb = $req->fetch();
+        
+        return $nb;
+    }
+
     public function newChapter($title, $content)
     {
         $db = $this->dbConnect();
@@ -70,5 +78,14 @@ class ChapterManager extends Manager
         $affectedLines = $req->execute(array(':id' => $id, ':newTitle' => $title,':newContent' => $content));
         
         return $affectedLines;
+    }
+
+    public function deleteChapter($id) {
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE FROM post WHERE id = ?');
+        $req->execute(array($id));
+        $delete = $req->rowCount();
+        
+        return $delete;
     }
 }

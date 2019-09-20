@@ -9,7 +9,7 @@
 		<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
         <title>
-            Billet pour l'Alaska
+            Billet Simple pour l'Alaska
 		</title>
 		<style type="text/css">
 			#pagejs {
@@ -94,6 +94,7 @@
 			.phpCommentContent > i {
 				font-size: 1.3em;
 				height: 20px;
+				margin: auto;
 			}
 
 			.phpCommentContent {
@@ -124,10 +125,6 @@
 			#newComment button {
 				background: white;
 				color: #294997;
-			}
-			
-			[placeholder] {
-				color: white;
 			}
 
 			#getForm {
@@ -171,7 +168,7 @@
 						<span class="navbar-toggler-bar bottom-bar"></span>
 					</button>
 				</div>
-				<div class="collapse navbar-collapse justify-content-end" id="navigation">
+				<div class="collapse navbar-collapse justify-content-end" id="navigation" style="max-width: 250px;">
 					<ul class="navbar-nav">
 						<li class="nav-item">
 							<a class="nav-link" href="index.php?action=about">
@@ -241,7 +238,7 @@
 					<nav>
 						<ul>
 							<li>
-								<a href="#">
+								<a href="index.php?action=legal">
 									Mentions légales
 								</a>
 							</li>
@@ -283,10 +280,6 @@
 		$(window).on('click', function() {
 			reHeight();
 		});
-		// $("#addButton").on('click', function() {
-		// 	console.log('onclick');
-		// 	addNewComment();
-		// })
 	});
 
 	function reHeight() {
@@ -358,14 +351,8 @@
 			commentContent.animate({'opacity':'0'}, 600);
 			commentCheck.animate({'opacity':'1'}, 1000);
 			commentContent.css('z-index', '1');
-			commentCheck.css('z-index', '25');
-			
-			
-			
+			commentCheck.css('z-index', '25');	
 		}, 0);
-		// comment.css('height', he);
-		// comment.width('width', '100%');
-		// comment.html("<div class=\"container\">Signaler le commentaire ?</div> <div class=\"container\"><i class=\"fas fa-check\" style=\"font-size: 2em; margin: 0 20 0 20;\"></i><i class=\"fas fa-times\" style=\"font-size: 2em; margin: 0 20 0 20;\"></i></div>");
 	};
 
 	function validSignal(commentId) {
@@ -429,38 +416,6 @@
 		// form.animate({'opacity' : '0'}, 400);
 		// com.animate({'opacity' : '1'}, 1000);
 	};
-
-	$(document).ready(function() {
-		$('#form').submit( function() {
-			var name = $('#name').val();
-			var commentaire = $('#message').val();
-			if (name != '' && commentaire != '') {
-				$.post('./assets/ajaxComment.php', {name:name, commentaire:commentaire}, function(data){
-					var xmlData = data.getElementsByTagName('com')[0];
-					var ret = xmlData.getElementsByTagName('ret')[0].firstChild.nodeValue;
-					var xmlname = xmlData.getElementsByTagName('name')[0].firstChild.nodeValue;
-					var xmlCommentaire = xmlData.getElementsByTagName('commentaire')[0].firstChild.nodeValue;
-					if (ret) {
-						$('#comment').prepend('<p class="last"><strong>'+xmlname+'</strong> a dit :<br />'+xmlCommentaire+'</p>');
-						$('#message').val('').focus();
-						$('#message').after('<span class="ok">Commentaire ajouté avec succès</span>');
-					}
-					else {
-						$('#message').after('<span class="erreur">Erreur lors de l\'ajout du commentaire</span>');
-					}
-				}, 'xml');
-			}
-			else {
-				if (name == '')
-					$('#name').after('<span class="erreur">Champ requis</span>');
-				if (commentaire == '')
-					$('#message').after('<span class="erreur">Champ requis</span>');
-				$('.erreur').hide().fadeIn('slow');
-			}
-			
-			return false;
-    	}); 
-	});
 
 	</script>
 
