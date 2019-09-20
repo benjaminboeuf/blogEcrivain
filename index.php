@@ -93,7 +93,7 @@ try {
         	$backend->getProfil();
         }
         elseif ($_GET['action'] == 'updateProfile') {
-        	$backend->updateProfile(htmlspecialchars($_POST['username']), htmlspecialchars($_POST['pseudo']), $_POST['oldpass'], $_POST['newpass']);
+        	$backend->updateProfile(htmlspecialchars($_POST['pseudo']), $_POST['oldpass'], $_POST['newpass']);
         }
         elseif ($_GET['action'] == 'home') {
             $frontend->getHome();

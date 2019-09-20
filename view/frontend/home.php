@@ -81,11 +81,6 @@
                                 Mentions légales
                             </a>
                         </li>
-                        <!-- <li>
-                            <a href="#">
-                                Plan du site
-                            </a>
-                        </li> -->
                     </ul>
                 </nav>
                 <div class="copyright" id="copyright">

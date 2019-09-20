@@ -63,7 +63,7 @@ if (isset($_SESSION['pseudo'])) {
                         <table class="table table-bordered table-striped table-responsive">
                             <tbody>
                                 <tr style="background: rgba(255, 0, 0, 0.1);">
-                                    <td style="min-width: 250px;">
+                                    <td style="min-width: 250px; width: 100%">
                                         <h5><?= $data['title'] ?></h5>
                                         <p>par <?= $data['author'] ?></p>
                                     </td>
@@ -93,7 +93,7 @@ if (isset($_SESSION['pseudo'])) {
                         <table class="table table-bordered table-striped table-responsive">
                             <tbody>
                                 <tr>
-                                    <td style="min-width: 250px;">
+                                    <td style="min-width: 250px; width: 100%">
                                         <h5><?= $data['title'] ?></h5>
                                         <p>par <?= $data['author'] ?></p>
                                     </td>

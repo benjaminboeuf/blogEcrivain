@@ -158,12 +158,12 @@ class Backend
     	return $admin;
     }
 
-    function updateProfile($username, $pseudo, $oldpass, $newpass)
+    function updateProfile($pseudo, $oldpass, $newpass)
     {
        	$adminMana = new AdminManager();
-    	$admin = $adminMana->updateProfile($username, $pseudo, $oldpass, $newpass);
+    	$admin = $adminMana->updateProfile($pseudo, $oldpass, $newpass);
 
-    	// header('Refresh: 5;URL=index.php?action=profil');
+    	header('Refresh: 5;URL=index.php?action=profil');
     	return $admin;
     }
 }

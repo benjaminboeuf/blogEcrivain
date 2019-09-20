@@ -69,12 +69,12 @@ if (isset($_SESSION['pseudo'])) {
                                 <div class="col-md-12">
                                     <form action="index.php?action=updateProfile" method="post">
                                         <?php $data = $admin->fetch() ?>
-                                        <div class="form-group row">
+                                        <!-- <div class="form-group row">
                                             <label for="username" class="col-sm-4 col-form-label">Prénom et nom</label> 
                                             <div class="col-sm-8">
                                                 <input id="username" name="username" value="<?= $data['username']?>" class="form-control here" type="text">
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                         <div class="form-group row">
                                             <label for="pseudo" class="col-sm-4 col-form-label">Pseudo</label> 

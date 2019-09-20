@@ -74,7 +74,7 @@ if (isset($_SESSION['pseudo'])) {
                             <table class="table table-bordered table-striped table-responsive" style="margin-bottom: 40px;">
                                 <tbody>
                                     <tr>
-                                        <td style="min-width: 250px;">
+                                        <td style="min-width: 250px; width: 100%">
                                             <h3 style="font-size: 1.2em;"><?= $data['title'] ?></h3>
                                         </td>
                                         <td>

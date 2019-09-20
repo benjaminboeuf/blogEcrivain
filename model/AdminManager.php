@@ -85,17 +85,11 @@ class AdminManager extends Manager
 		return $req;
 	}
 
-	public function updateProfile($username, $pseudo, $oldpass, $newpass)
+	public function updateProfile($pseudo, $oldpass, $newpass)
 	{
 		$db = $this->dbConnect();
 
 		$req = null;
-		if (!$username == null) {
-			$req = $db->prepare('UPDATE user SET username = :username WHERE id = 1');
-			$req->bindValue(':username', $username);
-			$req->execute();
-			echo '<div class="container" style="text-align: center; font-size: 1.3em; color: grey; margin: 20 0 20 0">Vos nom et prénom ont été mis à jour</div>';
-		}
 		if (!$pseudo == null) {
 			$req = $db->prepare('UPDATE user SET login = :pseudo WHERE id = 1');
 			$req->bindValue(':pseudo', $pseudo);
