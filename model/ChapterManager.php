@@ -20,6 +20,17 @@ class ChapterManager extends Manager
         return $req;
     }
 
+    public function pagination($startFrom, $limi)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('SELECT * FROM post ORDER BY id ASC LIMIT :startFrom, :limi');
+        $req->bindParam(':startFrom', $startFrom, PDO::PARAM_INT);
+        $req->bindParam(':limi', $limi, PDO::PARAM_INT);
+        $req->execute();
+
+        return $req;
+    }
+
     public function getContent($id)
     {
         $db = $this->dbConnect();

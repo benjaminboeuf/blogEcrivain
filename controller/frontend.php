@@ -14,7 +14,26 @@ class Frontend
     {
         $chapterManager = new ChapterManager();
         $sommaire = $chapterManager->getSommaire();
+
+        $limit = 3;
+        $pag = $chapterManager->countChapters();
+        $totalRecords = $pag[0];
+        $totalPages = ceil($totalRecords / $limit);
+
         include '.\view\frontend\book.php';
+    }
+
+    function getPagination($page) {
+        $limit = 3;  
+        $startFrom = ($page-1) * $limit;
+
+        $chapterManager = new ChapterManager();
+        $pagination = $chapterManager->pagination($startFrom, $limit);
+
+		while ($result = $pagination->fetch()) {
+		    echo "<li class=\"chapterList\" value=" . $result['id'] . " onclick=\"getChapter(" . $result['id'] . ")\"> <a href=\"#\">" . $result['title'] . "</a></li>";
+        }
+        
     }
 
     function getContent($id)
@@ -48,7 +67,7 @@ class Frontend
                     if ($data['signaled'] == 1) {
                         echo "<i class=\"fas fa-exclamation-circle\" style=\"color: red\" title=\"Commentaire signalé !\" rel=\"tooltip\"></i>";
                     }
-                    else {
+                    elseif ($data['signaled'] == 0) {
                         echo "<i class=\"fas fa-exclamation-circle\" style=\"cursor: pointer\" rel=\"tooltip\" title=\"\" onclick=\"signaledComment(" . $data['id'] . ")\"></i>";
                     }
                 echo "</div>";

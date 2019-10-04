@@ -1,5 +1,7 @@
 $(document).ready(function() {
-		reHeight();
+		reHeight();$(window).on('scroll', function() {
+			reHeight();
+		});
 		$(window).on('zoom', function() {
 			reHeight();
 		});
@@ -12,19 +14,19 @@ $(document).ready(function() {
 	});
 
 	function reHeight() {
-		var pageH = $("#chapterBoard").height() + $("#commentBody").height();
+		var pageH = $("#chapterBoard").height() + $("#commentBody").height() + $("#chapSelector").height();
 		var pageH = pageH + 175;
 
-		if ($("#chapSelector").width() > 180) {
-			pageH = pageH + $("#chapSelector").height();
-		}
+		// if ($("#chapSelector").width() > 180) {
+		// 	pageH = pageH + $("#chapSelector").height();
+		// }
 
 		var pageH = pageH + 'px';
 		$("#pagejs").css('height', pageH);
 	};
 
 	function getChapter (chapterId) {
-		$("#commmentBoard").show();
+		// $("#commmentBoard").css('opacity', '1');
 
 		$(".chapterList:eq(" + (chapterId - 1) + ")").addClass("active");
 		$(".chapterList:not(.chapterList:eq(" + (chapterId - 1) + "))").removeClass("active");

@@ -104,6 +104,15 @@ try {
         elseif ($_GET['action'] == 'book') {
             $frontend->getBook();
         }
+        elseif ($_GET['action'] == 'pagination') {
+            if (!isset($_GET['page'])) {
+                $page = 1;
+                $frontend->getPagination($page);
+            }
+            else {
+                $frontend->getPagination($_GET['page']);
+            }
+        }
         elseif ($_GET['action'] == 'content') {
             if (isset($_GET['id'])) {
                 $frontend->getContent($_GET['id']);

@@ -57,6 +57,9 @@ class Backend
     function deleteChapter($id) {
         $chapterManager = new ChapterManager();
         $chapter = $chapterManager->deleteChapter($id);
+
+        $commentManager = new CommentManager();
+        $comment = $commentManager->deleteChapterComments($id);
         
         if ($chapter === false) {
             throw new Exception('Impossible de supprimer ce chapitre !');
@@ -71,11 +74,11 @@ class Backend
     {
     	$commentManager = new CommentManager();
         $comments = $commentManager->signaledComments();
-        
         $noComments = $commentManager->noSignaledComments();
+        $goodComments = $commentManager->goodSignaledComments();
         // var_dump($noComments);
 
-    	if ($comments === false && $noComments === false) {
+    	if ($comments === false && $noComments === false && $goodComments === false) {
     		throw new Exception('Impossible d\'afficher les commentaires !');
     	}
     	else {

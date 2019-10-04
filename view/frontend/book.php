@@ -56,7 +56,8 @@
 			}
 
 			#commentBoard {
-				min-height: 10em;
+				/* opacity: 0; */
+				min-height: 2em;
 				padding-right: 0px;
 				margin-top: 2em;
 				margin-left: 0;
@@ -204,17 +205,25 @@
 				<div class="page-header-image" data-parallax="true" style="background-image:url('./assets/img/header1.jpg');">
 				</div>
 				<div id="allBoard" class="container">
-					<div id="board" class="row col-sm-12">
-						<nav id="chapListBoard" class="col-sm-2">          
+					<div id="board" class="row col-lg-12">
+						<nav id="chapListBoard" class="container">          
 							<ul id="chapSelector" class="nav nav-pills nav-stacked">
-								<?php
-								while ($data = $sommaire->fetch()) { ?>
-									<li class="chapterList" value="<?= $data['id'] ?>" onclick="getChapter(<?= $data['id'] ?>)"> <a href="#"> Chapitre <?= $data['id'] ?> </a> </li>
-								<?php 
-								} ?>
+								<div id="chaptersList" class="col-12"></div>
+							
+								<div id="pagination" style="margin: auto;">
+									<ul style="margin: 10 0 10 0;" class='pagination text-center' id="pagination">
+										<?php if(!empty($totalPages)):for($i=1; $i<=$totalPages; $i++):  
+											if($i == 1):?>
+												<li class='active' id="<?php echo $i;?>"><a style="padding: 10 10 20 10;" href='index.php?action=pagination&page=<?php echo $i;?>'><?php echo $i;?></a></li> 
+											<?php else:?>
+												<li id="<?php echo $i;?>"><a style="padding: 10 10 20 10;" href='index.php?action=pagination&page=<?php echo $i;?>'><?php echo $i;?></a></li>
+											<?php endif;?>			
+										<?php endfor;endif;?>
+									</ul> 
+								</div>
 							</ul>
 						</nav>
-						<section id="chapterBoard" class="col-sm-10">
+						<section id="chapterBoard" class="container">
 							<div id="chapContent" class="panel panel-default">
 								<div id="chapTitle" class="panel-heading">
 									<h3 class="panel-title">Un Billet Simple pour l'Alaska</h3>
@@ -227,8 +236,8 @@
       				</div>
 					<div id="commentBoard" class="hide row col-sm-12">
 						<div id="commentBody" class="panel panel-body row col-sm-12">
-							<div class="container"></div>
-							</div>
+							<div class="container"><span style="margin: auto"><em>Un récit de Jean Forteroche<em></span></div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -262,6 +271,34 @@
 	</script>
 
 	<script src="./assets/js/book.js" type="text/javascript"></script>
+
+	<script>
+		jQuery(document).ready(function() {
+		jQuery("#chaptersList").load("index.php?action=pagination&page=1");
+			jQuery("#pagination li").on('click',function(e){
+			e.preventDefault();
+				jQuery("#chaptersList").html('loading...');
+				jQuery("#pagination li").removeClass('active');
+				jQuery(this).addClass('active');
+				var pageNum = this.id;
+				jQuery("#chaptersList").load("index.php?action=pagination&page=" + pageNum);
+			});
+    	});
+	</script>
+
+<!-- <script>
+		jQuery(document).ready(function() {
+		jQuery("#chaptersList").load("view/frontend/pagination.php?page=1");
+			jQuery("#pagination li").on('click',function(e){
+			e.preventDefault();
+				jQuery("#chaptersList").html('loading...');
+				jQuery("#pagination li").removeClass('active');
+				jQuery(this).addClass('active');
+				var pageNum = this.id;
+				jQuery("#chaptersList").load("view/frontend/pagination.php?page=" + pageNum);
+			});
+    	});
+	</script> -->
 
 	</body>
 </html>

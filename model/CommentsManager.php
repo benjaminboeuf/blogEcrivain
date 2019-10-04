@@ -62,6 +62,14 @@ class CommentManager extends Manager
         return $noComments;
     }
 
+    public function goodSignaledComments()
+    {
+        $db = $this->dbConnect();
+        $goodComments = $db->query('SELECT comment.id, post.title, comment.idPost, comment.author, comment.content, DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') AS comment_date_fr FROM comment LEFT JOIN post ON comment.idPost = post.id WHERE signaled = 3 ORDER BY comment_date DESC');
+        
+        return $goodComments;
+    }
+
     public function deleteComment($id) 
     {
         $db = $this->dbConnect();
@@ -72,10 +80,20 @@ class CommentManager extends Manager
         return $delete;
     }
 
+    public function deleteChapterComments($idPost)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare('DELETE FROM comment WHERE idPost = ?');
+        $req->execute(array($idPost));
+        $delete = $req->rowCount();
+        
+        return $delete;
+    }
+
     public function approveComment($id)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare('UPDATE comment SET signaled = 0 WHERE id = ?');
+        $req = $db->prepare('UPDATE comment SET signaled = 3 WHERE id = ?');
         $req->execute(array($id));
         $signal = $req->rowCount(); 
        
